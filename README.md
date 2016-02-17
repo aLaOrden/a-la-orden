@@ -10,7 +10,7 @@ La idea es que esta aplicación permita conectar personas que presten servicios 
 
 ## Desarrolladores
   * [Miguel Asencio](https://github.com/maasencioh)
-  * Gabriel Gonzáles
+  * [Gabriel González](https://github.com/gggonzalezg)
   * Sebastian Ospina
   * [Diego Vásquez] (https://github.com/davasqueza)
   * [Erick Velasco](https://github.com/erickvelasco11)
