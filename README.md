@@ -5,7 +5,7 @@
   * [Miguel Asencio](https://github.com/maasencioh)
   * Gabriel Gonzáles
   * Sebastian Ospina
-  * Diego Vásquez
+  * [Diego Vásquez] (https://github.com/davasqueza)
   * [Erick Velasco](https://github.com/erickvelasco11)
 
 ## Licencia
