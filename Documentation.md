@@ -19,3 +19,7 @@ grails run-app
     - [Udacity Git](https://www.udacity.com/course/how-to-use-git-and-github--ud775)
     - [GitHub flow](https://guides.github.com/introduction/flow/)
     - [Angular commit guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
+  - Firebase
+    - [5 minutes tutorial](https://www.firebase.com/tutorial/#gettingstarted)
+    - [Video Angular + Firebase](https://vimeo.com/131586562)
+    - [AngularFire repo](https://github.com/UnJavaScripter/angularfire-demo)
