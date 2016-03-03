@@ -28,3 +28,4 @@ grails run-app
     - [Programming Groovy 2](http://alaorden.github.io/Programming-Groovy-2.pdf)
     - [The definitive guide to Grails 2](http://alaorden.github.io/The.Definitive.Guide.to.Grails.2.pdf)
     - [Grails cookbook](http://grails.asia/grails-tutorial-for-beginners/)
+    - [Grails web services](https://grails.github.io/grails-doc/latest/guide/webServices.html)
