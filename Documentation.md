@@ -23,3 +23,8 @@ grails run-app
     - [5 minutes tutorial](https://www.firebase.com/tutorial/#gettingstarted)
     - [Video Angular + Firebase](https://vimeo.com/131586562)
     - [AngularFire repo](https://github.com/UnJavaScripter/angularfire-demo)
+  - Groovy y Grails
+    - [Tutoriales de Groovy](https://github.com/aLaOrden/groovyTutorials)
+    - [Programming Groovy 2](http://alaorden.github.io/Programming-Groovy-2.pdf)
+    - [The definitive guide to Grails 2](http://alaorden.github.io/The.Definitive.Guide.to.Grails.2.pdf)
+    - [Grails cookbook](http://grails.asia/grails-tutorial-for-beginners/)
