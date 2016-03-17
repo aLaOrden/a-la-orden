@@ -13,7 +13,7 @@ class Offer extends Service {
         latitude    nullable: false
         longitude   nullable: false
         price       nullable: false, min: 0
-        youtubeLink nullable: true
-        photoLink   nullable: true
+        youtubeLink nullable: true, url: true
+        photoLink   nullable: true, url: true
     }
 }

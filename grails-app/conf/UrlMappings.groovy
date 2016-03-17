@@ -14,5 +14,6 @@ class UrlMappings {
         "/users" (resources: "user")
         "/tags" (resources: "tag")
         "/offers" (resources: "offer")
+        "/demands" (resources: "demand")
 	}
 }

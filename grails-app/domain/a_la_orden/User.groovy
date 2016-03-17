@@ -14,7 +14,8 @@ class User {
 
     static hasMany = [
             favorites: User,
-            offers: Offer
+            offers: Offer,
+            demands: Demand
     ]
 
     static constraints = {
@@ -24,11 +25,12 @@ class User {
         lastName   nullable: false, size: 5..30
         email      nullable: false, size: 5..30, unique: true, email: true
         phone      nullable: true,  size: 7..13
-        avatarLink nullable: true,  size: 5..15, unique: true
+        avatarLink nullable: true,  size: 5..15, unique: true, url: true
         gender     nullable: false, inList: ["M", "F"]
         admin      nullable: false
 
         favorites  nullable: true
         offers     nullable: true
+        demands    nullable: true
     }
 }

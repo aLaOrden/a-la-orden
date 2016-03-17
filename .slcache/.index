@@ -3911,3 +3911,10 @@ n:1826:grails/util/BuildSettings$getClassesDir$3
 n:2009:java_io_File$createTempFile$6
 n:1385:java_io_File$deleteOnExit$7
 n:1489:java_io_File$delete$8
+n:900:sl/org/objectweb/asm/tree/LineNumberNode
+n:2753:org/codehaus/groovy/classgen/Verifier$15
+n:7091:org/codehaus/groovy/grails/plugins/web/api/MimeTypesApiSupport
+n:2275:org/codehaus/groovy/grails/commons/GrailsApplication$isArtefactOfType$0
+n:24362:com/googlecode/concurrentlinkedhashmap/ConcurrentLinkedHashMap
+n:1543:org/apache/commons/logging/Log$isDebugEnabled
+n:1831:sl/org/objectweb/asm/tree/TryCatchBlockNode
