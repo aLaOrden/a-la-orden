@@ -11,9 +11,10 @@ class UrlMappings {
         "500"(view:'/error')
 
         // API
-        "/users" (resources: "user")
-        "/tags" (resources: "tag")
-        "/offers" (resources: "offer")
+        "/users"   (resources: "user")
+        "/tags"    (resources: "tag")
+        "/offers"  (resources: "offer")
         "/demands" (resources: "demand")
+        "/scores"  (resources: "score")
 	}
 }

@@ -3918,3 +3918,4 @@ n:2275:org/codehaus/groovy/grails/commons/GrailsApplication$isArtefactOfType$0
 n:24362:com/googlecode/concurrentlinkedhashmap/ConcurrentLinkedHashMap
 n:1543:org/apache/commons/logging/Log$isDebugEnabled
 n:1831:sl/org/objectweb/asm/tree/TryCatchBlockNode
+n:1262:groovyjarjarantlr/NoViableAltForCharException

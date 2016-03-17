@@ -8,7 +8,6 @@ class Offer extends Service {
     String  youtubeLink
     String  photoLink
 
-
     static constraints = {
         latitude    nullable: false
         longitude   nullable: false

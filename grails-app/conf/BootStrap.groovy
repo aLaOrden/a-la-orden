@@ -1,5 +1,6 @@
 import a_la_orden.Demand
 import a_la_orden.Offer
+import a_la_orden.Score
 import a_la_orden.Tag
 import a_la_orden.User
 
@@ -41,6 +42,16 @@ class BootStrap {
         if (demand.validate()) demand.save()
         else demand.errors.allErrors.each { println it }
 
+        // score example
+        def score = new Score (
+                score: 5,
+                description: "Muy habil",
+                date: new Date(2012, 07, 16),
+                offer: offer
+        )
+        if (score.validate()) score.save()
+        else score.errors.allErrors.each { println it }
+
         // user example
         def user = new User (
                 username: "maasencioh",
@@ -51,10 +62,12 @@ class BootStrap {
                 gender: "M",
                 admin: true,
                 offers: [],
-                demands: []
+                demands: [],
+                scores: []
         )
         user.offers.add(offer)
         user.demands.add(demand)
+        user.scores.add(score)
         if (user.validate()) user.save()
         else user.errors.allErrors.each { println it }
     }

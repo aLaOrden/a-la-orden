@@ -15,7 +15,8 @@ class User {
     static hasMany = [
             favorites: User,
             offers: Offer,
-            demands: Demand
+            demands: Demand,
+            scores: Score
     ]
 
     static constraints = {
@@ -32,5 +33,6 @@ class User {
         favorites  nullable: true
         offers     nullable: true
         demands    nullable: true
+        scores     nullable: true
     }
 }
