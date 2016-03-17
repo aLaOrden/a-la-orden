@@ -13,5 +13,6 @@ class UrlMappings {
         // API
         "/users" (resources: "user")
         "/services" (resources: "service")
+        "/tags" (resources: "tag")
 	}
 }
