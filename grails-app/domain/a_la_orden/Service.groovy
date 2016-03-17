@@ -4,7 +4,7 @@ class Service {
 
     String title
     String description
-    Date   deadline
+    Long   deadline
     String state
 
     static hasMany = [tags: Tag]
@@ -15,6 +15,6 @@ class Service {
         deadline    nullable: false
         state       nullable: false, inList: ["activo", "pausado", "cancelado"]
 
-        tags        nullable: false
+        tags        nullable: true
     }
 }

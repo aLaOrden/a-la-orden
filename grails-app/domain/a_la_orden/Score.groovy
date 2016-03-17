@@ -4,7 +4,7 @@ class Score {
 
     Integer score
     String  description
-    Date    date
+    Long    date
     Offer   offer
 
     static constraints = {

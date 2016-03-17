@@ -3919,3 +3919,5 @@ n:24362:com/googlecode/concurrentlinkedhashmap/ConcurrentLinkedHashMap
 n:1543:org/apache/commons/logging/Log$isDebugEnabled
 n:1831:sl/org/objectweb/asm/tree/TryCatchBlockNode
 n:1262:groovyjarjarantlr/NoViableAltForCharException
+n:1820:grails/util/BuildSettings$getBaseDir$4
+n:1408:java_io_File$getCanonicalPath$9

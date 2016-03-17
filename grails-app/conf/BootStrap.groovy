@@ -18,7 +18,7 @@ class BootStrap {
         def offer = new Offer (
                 title: "Cursos de organo",
                 description: "Hace 3 años dicto cursos de organo, soy muy bueno",
-                deadline: new Date(),
+                deadline: new Date().time,
                 state: "activo",
                 tags: [],
                 latitude: 4.636487,
@@ -33,7 +33,7 @@ class BootStrap {
         def demand = new Demand (
                 title: "Cursos de guitarra",
                 description: "Como es posible que nadie dicte curso de guitarra?",
-                deadline: new Date(),
+                deadline: new Date().time,
                 state: "activo",
                 tags: [],
                 solved: false
@@ -46,7 +46,7 @@ class BootStrap {
         def score = new Score (
                 score: 5,
                 description: "Muy habil",
-                date: new Date(2012, 07, 16),
+                date: new Date(2012, 07, 16).time,
                 offer: offer
         )
         if (score.validate()) score.save()
