@@ -12,7 +12,10 @@ class User {
     String  gender
     Boolean admin
 
-    static hasMany = [favorites: User, services: Service]
+    static hasMany = [
+            favorites: User,
+            offers: Offer
+    ]
 
     static constraints = {
         username   nullable: false, size: 5..15, unique: true
@@ -26,6 +29,6 @@ class User {
         admin      nullable: false
 
         favorites  nullable: true
-        services   nullable: true
+        offers     nullable: true
     }
 }

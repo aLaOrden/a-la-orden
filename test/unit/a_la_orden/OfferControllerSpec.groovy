@@ -4,9 +4,9 @@ package a_la_orden
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ServiceController)
-@Mock(Service)
-class ServiceControllerSpec extends Specification {
+@TestFor(OfferController)
+@Mock(Offer)
+class OfferControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -20,8 +20,8 @@ class ServiceControllerSpec extends Specification {
         controller.index()
 
         then: "The model is correct"
-        !model.serviceInstanceList
-        model.serviceInstanceCount == 0
+        !model.offerInstanceList
+        model.offerInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -29,7 +29,7 @@ class ServiceControllerSpec extends Specification {
         controller.create()
 
         then: "The model is correctly created"
-        model.serviceInstance != null
+        model.offerInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -37,25 +37,25 @@ class ServiceControllerSpec extends Specification {
         when: "The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def service = new Service()
-        service.validate()
-        controller.save(service)
+        def offer = new Offer()
+        offer.validate()
+        controller.save(offer)
 
         then: "The create view is rendered again with the correct model"
-        model.serviceInstance != null
+        model.offerInstance != null
         view == 'create'
 
         when: "The save action is executed with a valid instance"
         response.reset()
         populateValidParams(params)
-        service = new Service(params)
+        offer = new Offer(params)
 
-        controller.save(service)
+        controller.save(offer)
 
         then: "A redirect is issued to the show action"
-        response.redirectedUrl == '/service/show/1'
+        response.redirectedUrl == '/offer/show/1'
         controller.flash.message != null
-        Service.count() == 1
+        Offer.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -67,11 +67,11 @@ class ServiceControllerSpec extends Specification {
 
         when: "A domain instance is passed to the show action"
         populateValidParams(params)
-        def service = new Service(params)
-        controller.show(service)
+        def offer = new Offer(params)
+        controller.show(offer)
 
         then: "A model is populated containing the domain instance"
-        model.serviceInstance == service
+        model.offerInstance == offer
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -83,11 +83,11 @@ class ServiceControllerSpec extends Specification {
 
         when: "A domain instance is passed to the edit action"
         populateValidParams(params)
-        def service = new Service(params)
-        controller.edit(service)
+        def offer = new Offer(params)
+        controller.edit(offer)
 
         then: "A model is populated containing the domain instance"
-        model.serviceInstance == service
+        model.offerInstance == offer
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -97,28 +97,28 @@ class ServiceControllerSpec extends Specification {
         controller.update(null)
 
         then: "A 404 error is returned"
-        response.redirectedUrl == '/service/index'
+        response.redirectedUrl == '/offer/index'
         flash.message != null
 
 
         when: "An invalid domain instance is passed to the update action"
         response.reset()
-        def service = new Service()
-        service.validate()
-        controller.update(service)
+        def offer = new Offer()
+        offer.validate()
+        controller.update(offer)
 
         then: "The edit view is rendered again with the invalid instance"
         view == 'edit'
-        model.serviceInstance == service
+        model.offerInstance == offer
 
         when: "A valid domain instance is passed to the update action"
         response.reset()
         populateValidParams(params)
-        service = new Service(params).save(flush: true)
-        controller.update(service)
+        offer = new Offer(params).save(flush: true)
+        controller.update(offer)
 
         then: "A redirect is issues to the show action"
-        response.redirectedUrl == "/service/show/$service.id"
+        response.redirectedUrl == "/offer/show/$offer.id"
         flash.message != null
     }
 
@@ -129,23 +129,23 @@ class ServiceControllerSpec extends Specification {
         controller.delete(null)
 
         then: "A 404 is returned"
-        response.redirectedUrl == '/service/index'
+        response.redirectedUrl == '/offer/index'
         flash.message != null
 
         when: "A domain instance is created"
         response.reset()
         populateValidParams(params)
-        def service = new Service(params).save(flush: true)
+        def offer = new Offer(params).save(flush: true)
 
         then: "It exists"
-        Service.count() == 1
+        Offer.count() == 1
 
         when: "The domain instance is passed to the delete action"
-        controller.delete(service)
+        controller.delete(offer)
 
         then: "The instance is deleted"
-        Service.count() == 0
-        response.redirectedUrl == '/service/index'
+        Offer.count() == 0
+        response.redirectedUrl == '/offer/index'
         flash.message != null
     }
 }

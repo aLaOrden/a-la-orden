@@ -1,4 +1,4 @@
-import a_la_orden.Service
+import a_la_orden.Offer
 import a_la_orden.Tag
 import a_la_orden.User
 
@@ -14,19 +14,22 @@ class BootStrap {
         else
             tag.errors.allErrors.each { println it }
 
-        // service example
-        def service = new Service(
+        // offer example
+        def offer = new Offer(
                 title: "Cursos de organo",
                 description: "Hace 3 años dicto cursos de organo, soy muy bueno",
                 deadline: new Date(),
                 state: "activo",
-                tags: []
+                tags: [],
+                latitude: 4.636487,
+                longitude: -74.083313,
+                price: 30000
         )
-        service.tags.add(tag)
-        if (service.validate())
-            service.save()
+        offer.tags.add(tag)
+        if (offer.validate())
+            offer.save()
         else
-            service.errors.allErrors.each { println it }
+            offer.errors.allErrors.each { println it }
 
         // user example
         def user = new User(
@@ -37,9 +40,9 @@ class BootStrap {
                 email: "maasencioh@gmail.com",
                 gender: "M",
                 admin: true,
-                services: []
+                offers: []
         )
-        user.services.add(service)
+        user.offers.add(offer)
         if (user.validate())
             user.save()
         else
