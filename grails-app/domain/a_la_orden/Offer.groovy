@@ -8,6 +8,8 @@ class Offer extends Service {
     String  youtubeLink
     String  photoLink
 
+    static belongsTo = User
+
     static constraints = {
         latitude    nullable: false
         longitude   nullable: false

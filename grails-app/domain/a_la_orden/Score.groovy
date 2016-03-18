@@ -7,6 +7,8 @@ class Score {
     Long    date
     Offer   offer
 
+    static belongsTo = User
+
     static constraints = {
         score       nullable: false, range: 1..5
         description nullable: true
