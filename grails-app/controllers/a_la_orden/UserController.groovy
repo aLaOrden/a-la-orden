@@ -8,4 +8,8 @@ class UserController extends RestfulController {
     UserController() {
         super(User)
     }
+
+    def username () {
+        respond User.findByUsername(params.username as String)
+    }
 }

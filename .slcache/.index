@@ -3921,3 +3921,6 @@ n:1831:sl/org/objectweb/asm/tree/TryCatchBlockNode
 n:1262:groovyjarjarantlr/NoViableAltForCharException
 n:1820:grails/util/BuildSettings$getBaseDir$4
 n:1408:java_io_File$getCanonicalPath$9
+n:1345:org/codehaus/groovy/grails/compiler/web/ControllerActionTransformer$1
+n:1295:org/springframework/validation/MapBindingResult
+n:429:grails/web/RequestParameter

@@ -6,6 +6,7 @@ URL | Metodo | Datos | Respuesta
 ----|--------|------|----------
 `/users/`| GET | - | Todos los usuarios
 `/users/$id`| GET | - | Busca usuario con id
+`/users/username/$username`| GET | - | Busca usuario con username
 `/users/`| POST | JSON usuario | Crea el usuario
 `/users/$id`| PUT | JSON usuario | Cambia usuario con id
 `/users/$id`| DELETE | - | Borra usuario con id
