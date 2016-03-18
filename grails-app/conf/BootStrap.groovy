@@ -9,7 +9,7 @@ class BootStrap {
     def init = { servletContext ->
         // tag example
         def tag = new Tag (
-                title: "Música"
+                title: "Musica"
         )
         if (tag.validate()) tag.save()
         else tag.errors.allErrors.each { println it }
@@ -28,6 +28,25 @@ class BootStrap {
         offer.tags.add(tag)
         if (offer.validate()) offer.save()
         else offer.errors.allErrors.each { println it }
+
+        def tag2 = new Tag (
+                title: "Matematicas"
+        )
+        if (tag.validate()) tag.save()
+        else tag.errors.allErrors.each { println it }
+        def offer2 = new Offer (
+                title: "Matem'aticas avanzadas",
+                description: "profesor de calCULo avnazado y profundo",
+                deadline: new Date().time,
+                state: "activo",
+                tags: [],
+                latitude: 4.636487,
+                longitude: -74.083313,
+                price: 30000
+        )
+        offer2.tags.add(tag2)
+        if (offer2.validate()) offer2.save()
+        else offer2.errors.allErrors.each { println it }
 
         // demand example
         def demand = new Demand (
