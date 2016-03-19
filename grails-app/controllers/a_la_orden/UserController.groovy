@@ -10,6 +10,12 @@ class UserController extends RestfulController {
     }
 
     def username () {
-        respond User.findByUsername(params.username as String)
+        try {
+            respond User.findByUsername(params.username as String)
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{error: "'+ e +'"}'
+        }
     }
 }
