@@ -1,5 +1,3 @@
-import a_la_orden.Tag
-
 class UrlMappings {
 
 	static mappings = {
