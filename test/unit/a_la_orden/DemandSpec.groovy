@@ -24,7 +24,7 @@ class DemandSpec extends Specification {
                 state: state,
                 solved: solved
         )
-        demand.validate() == val
+        demand.validate() == valid
 
         where: "valida la demanda"
         title   | description | deadline | state    | solved | valid
