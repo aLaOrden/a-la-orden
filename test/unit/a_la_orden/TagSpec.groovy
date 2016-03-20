@@ -1,6 +1,7 @@
 package a_la_orden
 
 import grails.test.mixin.TestFor
+import org.hibernate.id.TableGenerator
 import spock.lang.Specification
 
 /**
@@ -15,6 +16,19 @@ class TagSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "title"() {
+        expect: "crea una etiqueta"
+        def tag = new Tag (
+                title: title
+        )
+        tag.validate() == valid
+
+        where: "valida la etiqueta"
+        title    | valid
+        null     | false
+        ""       | false
+        "a"      | false
+        "a" * 60 | false
+        "12345"  | true
     }
 }
