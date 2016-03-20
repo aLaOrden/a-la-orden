@@ -20,13 +20,13 @@ class User {
     ]
 
     static constraints = {
-        username   nullable: false, size: 5..15, unique: true
+        username   nullable: false, size: 2..15, unique: true
         password   nullable: false, size: 5..15
-        firstName  nullable: false, size: 5..30
-        lastName   nullable: false, size: 5..30
+        firstName  nullable: false, size: 2..30
+        lastName   nullable: false, size: 2..30
         email      nullable: false, size: 5..30, unique: true, email: true
-        phone      nullable: true,  size: 7..13
-        avatarLink nullable: true,  size: 5..15, unique: true, url: true
+        phone      nullable: true
+        avatarLink nullable: true,  size: 5..30, unique: true, url: true
         gender     nullable: false, inList: ["M", "F"]
         admin      nullable: false
 
