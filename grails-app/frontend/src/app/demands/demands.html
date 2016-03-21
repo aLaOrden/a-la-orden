@@ -1,0 +1,50 @@
+﻿<md-content layout-fill>
+	<md-toolbar class="md-tall md-whiteframe-4dp md-hue-1">
+		<div class="md-toolbar-tools">
+			<h2>
+				<span>Demandas</span>
+			</h2>
+		</div>
+	</md-toolbar>
+	<md-content>
+		<md-card>
+			<md-card-content>
+				<h2>Ultimas demandas</h2>
+				<md-list>
+					<md-item ng-repeat="item in vm.demands">
+						<md-item-content layout="row">
+							<div class="inset">
+								<img ng-src="{{item.image_url}}" class="md-avatar" />
+							</div>
+							<div class="md-tile-content">
+								<h3>
+									<span>{{item.title}}</span>
+									<uib-rating state-on="'fa fa-star'" state-off="'fa fa-star-o'" ng-model="item.score" read-only="true"></uib-rating>
+								</h3> 
+								<p>
+								{{item.description}}
+								</p>
+							</div>
+							<div layout="column" layout-align="center center">
+								<h3>{{item.price}}</h3>
+								<md-button>Aplicar</md-button>
+							</div>
+						</md-item-content>
+						<md-divider md-inset hide-sm ng-if="!$last"/>
+						<md-divider hide-gt-sm ng-if="!$last"/>
+					</md-item>
+					<md-divider/>
+					<md-item layout>
+						<md-button flex class="md-primary">
+							<md-icon md-svg-icon="arrow_forward"></md-icon>
+							<b>Más</b>
+						</md-button>
+					</md-item>
+				</md-list>
+			</md-card-content>
+		</md-card>
+	</md-content>
+	<md-button class="md-fab md-fab-bottom-right" style="position: fixed" aria-label="FAB">
+		<md-icon md-svg-icon="add"></md-icon>
+	</md-button>
+</md-content>
