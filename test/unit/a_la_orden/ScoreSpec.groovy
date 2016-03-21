@@ -17,20 +17,10 @@ class ScoreSpec extends Specification {
 
     void "null"() {
         expect: "crea una calificacion"
-        def offer = new Offer (
-                title: "Cursos de organo",
-                description: "Hace 3 años dicto cursos de organo, soy muy bueno",
-                deadline: new Date().time,
-                state: "activo",
-                latitude: 4.636487,
-                longitude: -74.083313,
-                price: 30000
-        )
         def score = new Score (
                 score: num,
                 description: description,
-                date: date,
-                offer: offer
+                date: date
         )
         score.validate() == valid
 
@@ -44,20 +34,10 @@ class ScoreSpec extends Specification {
 
     void "score"() {
         expect: "crea una calificacion"
-        def offer = new Offer (
-                title: "Cursos de organo",
-                description: "Hace 3 años dicto cursos de organo, soy muy bueno",
-                deadline: new Date().time,
-                state: "activo",
-                latitude: 4.636487,
-                longitude: -74.083313,
-                price: 30000
-        )
         def score = new Score (
                 score: num,
                 description: description,
-                date: date,
-                offer: offer
+                date: date
         )
         score.validate() == valid
 
