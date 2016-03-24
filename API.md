@@ -27,6 +27,7 @@ URL | Metodo | Datos | Respuesta
 ----|--------|------|----------
 `/offers/`| GET | - | Todas las ofertas
 `/offers/$id`| GET | - | Busca oferta con id
+`/offers/tag/$title`| GET | - | Busca oferta por el nombre de la etiqueta
 `/offers/`| POST | JSON usuario | Crea la oferta
 `/offers/$id`| PUT | JSON usuario | Cambia oferta con id
 `/offers/$id`| DELETE | - | Borra oferta con id
