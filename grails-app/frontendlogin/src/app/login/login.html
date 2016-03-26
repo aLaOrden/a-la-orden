@@ -1,0 +1,71 @@
+﻿<md-content>
+	<md-toolbar class="md-tall md-whiteframe-4dp md-hue-1">
+		<div class="md-toolbar-tools">
+			<h2>
+				<span>Login</span>
+			</h2>
+		</div>
+	</md-toolbar>
+	
+	<md-card>
+		<md-card-content>
+
+       		<div layout-gt-sm="row">
+          		
+            	<label>Correo</label>
+         		
+          		<md-input-container class="md-block" flex-gt-sm="">
+
+            		<input ng-model="theMax">
+          		</md-input-container>
+        	</div>
+
+        	<div layout-gt-sm="row">
+          		
+            	<label>Contraseña</label>
+         		
+          		<md-input-container class="md-block" flex-gt-sm="">
+
+            		<input ng-model="theMax">
+          		</md-input-container>
+        	</div>
+
+	        <div flex-xs="" flex="50">
+	          	<md-checkbox md-no-ink="" aria-label="¿Recordarte?" ng-model="data.cb5" >
+	            	¿Recordarme?
+	          	</md-checkbox>
+	        </div>
+
+	        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        		
+        		<md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">¿Olvido su contraseña?</md-button>
+
+    		</section>
+
+    		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+		      	<md-button class="md-raised md-primary">Iniciar</md-button>
+		    </section>
+
+		   	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        		
+        		<md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">¿No tiene una cuenta?</md-button>
+
+    		</section>
+
+    		<label>"O inicie secion con:"</label>
+
+    		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+		        <md-button class="md-fab" aria-label="google_plus">
+		            <md-icon md-svg-icon="google_plus"></md-icon>
+		        </md-button>
+
+		        <md-button class="md-fab" aria-label="twitter">
+		            <md-icon md-svg-icon="twitter"></md-icon>
+		        </md-button>
+
+		    </section>
+			
+		</md-card-content>
+	</md-card>
+	
+</md-content>
