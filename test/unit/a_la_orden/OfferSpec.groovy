@@ -105,11 +105,13 @@ class OfferSpec extends Specification {
         offer.validate() == valid
 
         where: "valida la oferta"
-        title    | description | deadline | state       | latitude | longitude | price | youtubeLink          | photoLink           | valid
-        "curso"  | "?"         | 123      | "activo"    | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
-        "curso"  | "?"         | 123      | "pausado"   | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
-        "curso"  | "?"         | 123      | "cancelado" | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
-        "curso"  | "?"         | 123      | "otro"      | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | false
+        title    | description | deadline | state        | latitude | longitude | price | youtubeLink          | photoLink           | valid
+        "curso"  | "?"         | 123      | "activo"     | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
+        "curso"  | "?"         | 123      | "pendiente"  | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
+        "curso"  | "?"         | 123      | "cancelado"  | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
+        "curso"  | "?"         | 123      | "finalizado" | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
+        "curso"  | "?"         | 123      | "reportado"  | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | true
+        "curso"  | "?"         | 123      | "otro"       | 12.3     | -1.23     | 123   | "http://youtube.com" | "http://github.com" | false
     }
 
     void "links"() {

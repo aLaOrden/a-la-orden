@@ -13,7 +13,7 @@ class Service {
         title       nullable: false, size: 5..50
         description nullable: false, blank: false
         deadline    nullable: false
-        state       nullable: false, inList: ["activo", "pausado", "cancelado"]
+        state       nullable: false, inList: ["activo", "pendiente", "cancelado", "finalizado", "reportado"]
 
         tags        nullable: true
     }

@@ -85,10 +85,12 @@ class DemandSpec extends Specification {
         demand.validate() == valid
 
         where: "valida la demanda"
-        title    | description | deadline | state       | solved | valid
-        "curso"  | "?"         | 123      | "activo"    | false  | true
-        "curso"  | "?"         | 123      | "pausado"   | false  | true
-        "curso"  | "?"         | 123      | "cancelado" | false  | true
-        "curso"  | "?"         | 123      | "otro"      | false  | false
+        title    | description | deadline | state        | solved | valid
+        "curso"  | "?"         | 123      | "activo"     | false  | true
+        "curso"  | "?"         | 123      | "pendiente"  | false  | true
+        "curso"  | "?"         | 123      | "cancelado"  | false  | true
+        "curso"  | "?"         | 123      | "finalizado" | false  | true
+        "curso"  | "?"         | 123      | "reportado"  | false  | true
+        "curso"  | "?"         | 123      | "otro"       | false  | false
     }
 }
