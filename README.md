@@ -18,5 +18,5 @@ La idea es que esta aplicación permita conectar personas que presten servicios 
 ## Licencia
   [MIT](./LICENSE)
 
-[travis-image]: https://img.shields.io/travis/aLaOrden/a-la-orden/master.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/aLaOrden/a-la-orden.svg?style=flat-square
 [travis-url]: https://travis-ci.org/aLaOrden/a-la-orden
