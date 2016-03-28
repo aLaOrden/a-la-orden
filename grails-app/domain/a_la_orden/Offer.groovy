@@ -7,6 +7,7 @@ class Offer extends Service {
     Integer price
     String  youtubeLink
     String  photoLink
+    Long    deadline
 
     static belongsTo = User
 
@@ -16,5 +17,6 @@ class Offer extends Service {
         price       nullable: false, min: 0
         youtubeLink nullable: true, url: true
         photoLink   nullable: true, url: true
+        deadline    nullable: false
     }
 }

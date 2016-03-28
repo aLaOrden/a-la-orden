@@ -20,20 +20,18 @@ class DemandSpec extends Specification {
         def demand = new Demand (
                 title: title,
                 description: description,
-                deadline: deadline,
                 state: state,
                 solved: solved
         )
         demand.validate() == valid
 
         where: "valida la demanda"
-        title   | description | deadline | state    | solved | valid
-        null    | "?"         | 123      | "activo" | false  | false
-        "curso" | null        | 123      | "activo" | false  | false
-        "curso" | "?"         | null     | "activo" | false  | false
-        "curso" | "?"         | 123      | null     | false  | false
-        "curso" | "?"         | 123      | "activo" | null   | false
-        "curso" | "?"         | 123      | "activo" | false  | true
+        title   | description | state    | solved | valid
+        null    | "?"         | "activo" | false  | false
+        "curso" | null        | "activo" | false  | false
+        "curso" | "?"         | null     | false  | false
+        "curso" | "?"         | "activo" | null   | false
+        "curso" | "?"         | "activo" | false  | true
     }
 
     void "title"() {
@@ -41,18 +39,17 @@ class DemandSpec extends Specification {
         def demand = new Demand (
                 title: title,
                 description: description,
-                deadline: deadline,
                 state: state,
                 solved: solved
         )
         demand.validate() == valid
 
         where: "valida la demanda"
-        title    | description | deadline | state    | solved | valid
-        null     | "?"         | 123      | "activo" | false  | false
-        "c"      | "?"         | 123      | "activo" | false  | false
-        "a" * 60 | "?"         | 123      | "activo" | false  | false
-        "curso"  | "?"         | 123      | "activo" | false  | true
+        title    | description | state    | solved | valid
+        null     | "?"         | "activo" | false  | false
+        "c"      | "?"         | "activo" | false  | false
+        "a" * 60 | "?"         | "activo" | false  | false
+        "curso"  | "?"         | "activo" | false  | true
     }
 
     void "blank"() {
@@ -60,17 +57,16 @@ class DemandSpec extends Specification {
         def demand = new Demand (
                 title: title,
                 description: description,
-                deadline: deadline,
                 state: state,
                 solved: solved
         )
         demand.validate() == valid
 
         where: "valida la demanda"
-        title    | description | deadline | state    | solved | valid
-        "curso"  | null        | 123      | "activo" | false  | false
-        "curso"  | ""          | 123      | "activo" | false  | false
-        "curso"  | "?"         | 123      | "activo" | false  | true
+        title    | description | state    | solved | valid
+        "curso"  | null        | "activo" | false  | false
+        "curso"  | ""          | "activo" | false  | false
+        "curso"  | "?"         | "activo" | false  | true
     }
 
     void "lista de estados"() {
@@ -78,19 +74,18 @@ class DemandSpec extends Specification {
         def demand = new Demand (
                 title: title,
                 description: description,
-                deadline: deadline,
                 state: state,
                 solved: solved
         )
         demand.validate() == valid
 
         where: "valida la demanda"
-        title    | description | deadline | state        | solved | valid
-        "curso"  | "?"         | 123      | "activo"     | false  | true
-        "curso"  | "?"         | 123      | "pendiente"  | false  | true
-        "curso"  | "?"         | 123      | "cancelado"  | false  | true
-        "curso"  | "?"         | 123      | "finalizado" | false  | true
-        "curso"  | "?"         | 123      | "reportado"  | false  | true
-        "curso"  | "?"         | 123      | "otro"       | false  | false
+        title    | description | state        | solved | valid
+        "curso"  | "?"         | "activo"     | false  | true
+        "curso"  | "?"         | "pendiente"  | false  | true
+        "curso"  | "?"         | "cancelado"  | false  | true
+        "curso"  | "?"         | "finalizado" | false  | true
+        "curso"  | "?"         | "reportado"  | false  | true
+        "curso"  | "?"         | "otro"       | false  | false
     }
 }
