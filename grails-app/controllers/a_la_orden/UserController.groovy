@@ -11,26 +11,34 @@ class UserController extends RestfulController {
 
     def username () {
         try {
-            def a = User.findByUsername(params.username as String)
-            respond a.collect {
-                [
-                        avatar   : a.avatarLink,
-                        firstName: a.firstName,
-                        lastName : a.lastName,
-                        email    : a.email,
-                        phone    : a.phone,
-                        gender   : a.gender,
-                        scores   : a.scores,
-                        offers   : a.offers,
-                        demands  : a.demands,
-                        favorites: a.favorites
-                ]
+            def criteria = User.createCriteria()
+            def user = criteria.get {
+                eq('username', params.username)
             }
+            def queryMap = new HashMap(user.properties)
+            queryMap.remove("offers")
+            queryMap.remove("favorites")
+            queryMap.remove("demands")
+            queryMap.remove("password")
+            def scores = queryMap.remove("scores")
+            def scoresAvg = getScoresAverage(scores)
+            queryMap.put("scoreAvg", scoresAvg)
+            respond queryMap
         }
         catch (Exception e) {
             response.setContentType("application/json")
             render '{error: "'+ e +'"}'
         }
+    }
+
+    def getScoresAverage(def scores){
+        def average = 0;
+        for (int i = 0; i < scores.size(); i++) {
+            Score myScore = scores[i]
+            average += myScore.score
+        }
+        average /= scores.size()
+        return average;
     }
 
     def index(){
