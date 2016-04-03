@@ -89,6 +89,25 @@ class BootStrap {
         user.scores.add(score)
         if (user.validate()) user.save()
         else user.errors.allErrors.each { println it }
+
+        // user example
+        def user2 = new User (
+                username: "erickvelasco11",
+                password: "Erick.123",
+                firstName: "Erick",
+                lastName: "Velasco",
+                email: "erickvelasco11@gmail.com",
+                gender: "M",
+                admin: true,
+                offers: [],
+                demands: [],
+                scores: []
+        )
+        user2.offers.add(offer)
+        user2.demands.add(demand)
+        user2.scores.add(score)
+        if (user2.validate()) user.save()
+        else user2.errors.allErrors.each { println it }
     }
     def destroy = {
     }

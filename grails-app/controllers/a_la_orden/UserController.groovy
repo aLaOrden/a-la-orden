@@ -15,14 +15,14 @@ class UserController extends RestfulController {
             respond a.collect {
                 [
                         avatar   : a.avatarLink,
-                        firstName   : a.firstName,
+                        firstName: a.firstName,
                         lastName : a.lastName,
                         email    : a.email,
                         phone    : a.phone,
                         gender   : a.gender,
                         scores   : a.scores,
-                        offers  : a.offers,
-                        demands : a.demands,
+                        offers   : a.offers,
+                        demands  : a.demands,
                         favorites: a.favorites
                 ]
             }
@@ -32,19 +32,41 @@ class UserController extends RestfulController {
             render '{error: "'+ e +'"}'
         }
     }
+
+    def index(){
+        try {
+            def users = User.getAll()
+            respond users.collect {
+                [
+                        avatar   : users.avatarLink,
+                        firstName: users.firstName,
+                        lastName : users.lastName,
+                        email    : users.email,
+                        phone    : users.phone,
+                        gender   : users.gender
+                ]
+            }
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{error: "'+ e +'"}'
+        }
+    }
+
+    def newUser(){
+        def user = new User (
+                username: params.username as String,
+                password: params.pass as String,
+                firstName: params.name as String,
+                lastName: params.surname as String,
+                email: params.email as String,
+                gender: params.gender as String,
+                admin: false,
+                offers: [],
+                demands: [],
+                scores: []
+        )
+        if (user.validate()) user.save()
+        else user.errors.allErrors.each { println it }
+    }
 }
-/*
-def userInfo = [
-                    ["avatar: " , a.avatarLink],
-                    ["firstName: " , a.firstName],
-                    ["lastName: " , a.lastName],
-                    ["email: " , a.email],
-                    ["phone: " , a.phone],
-                    ["gender: " , a.gender],
-                    ["scores: " , a.scores],
-                    ["offers: " , a.offers],
-                    ["demands: " , a.demands],
-                    ["favorites: " , a.favorites]
-            ]
- */
-//[{"class":"a_la_orden.User","id":1,"admin":true,"avatarLink":null,"demands":[{"class":"a_la_orden.Demand","id":3}],"email":"maasencioh@gmail.com","favorites":[],"firstName":"Miguel","gender":"M","lastName":"Asencio","offers":[{"class":"a_la_orden.Offer","id":1}],"password":"12345","phone":null,"scores":[{"class":"a_la_orden.Score","id":1}],"username":"maasencioh"}]
