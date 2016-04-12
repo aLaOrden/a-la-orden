@@ -21,5 +21,5 @@ La idea es que esta aplicación permita conectar personas que presten servicios 
 
 [travis-image]: https://img.shields.io/travis/aLaOrden/a-la-orden.svg?style=flat-square
 [travis-url]: https://travis-ci.org/aLaOrden/a-la-orden
-[heroku-image]: http://heroku-badge.herokuapp.com/?app=a-la-orden&style=flat
-[heroku-url]: http://a-la-orden.herokuapp.com/
+[heroku-image]: http://heroku-badge.herokuapp.com/?app=alaorden-rest&style=flat
+[heroku-url]: http://alaorden-rest.herokuapp.com/
