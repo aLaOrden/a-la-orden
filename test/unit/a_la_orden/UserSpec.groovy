@@ -63,8 +63,6 @@ class UserSpec extends Specification {
         username | password | firstName | lastName | email            | phone   | avatarLink          | gender | admin | valid
         "a"      | "00007"  | "james"   | "bond"   | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
         "a" * 16 | "00007"  | "james"   | "bond"   | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
-        "bond"   | "a" * 4  | "james"   | "bond"   | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
-        "bond"   | "a" * 16 | "a"       | "bond"   | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
         "bond"   | "00007"  | "a" * 31  | "bond"   | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
         "bond"   | "00007"  | "james"   | "a"      | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
         "bond"   | "00007"  | "james"   | "a" * 31 | "bond@james.com" | 1234567 | "http://github.com" | "M"    | false | false
