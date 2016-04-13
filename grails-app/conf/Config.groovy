@@ -115,3 +115,11 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+//cors config.
+cors.enabled=true
+cors.headers = [
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Headers': 'origin, authorization, accept, content-type, x-requested-with',
+	'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS'
+]

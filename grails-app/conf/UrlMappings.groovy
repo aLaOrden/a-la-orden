@@ -4,6 +4,7 @@ class UrlMappings {
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
+                action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
             }
         }
 
@@ -12,6 +13,7 @@ class UrlMappings {
 
         // API
         "/users/username/$username?" (controller: "user", action: "username")
+        //"/users/newUser/$username?$password?$firstName?$lastName?$email?$gender?" (controller: "user", action: "newUser")
         "/users"   (resources: "user")
         "/tags"    (resources: "tag")
         "/offers/tag/$title?"(controller: "offer", action: "classified")
