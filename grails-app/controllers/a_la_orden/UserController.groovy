@@ -27,7 +27,7 @@ class UserController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render '{"error": "'+ e +'"}'
         }
     }
 
@@ -58,7 +58,7 @@ class UserController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render '{"error": "'+ e +'"}'
         }
     }
 
@@ -85,13 +85,13 @@ class UserController extends RestfulController {
             String password = params.password
             def user = User.findByUsername(username)
             if (user && (user.password == password))
-                render "{access: 'accepted'}"
+                render '{"access": "accepted"}'
             else
-                render "{access: 'denied'}"
+                render '{"access": "denied"}'
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render '{"error": "'+ e +'"}'
         }
     }
 }
