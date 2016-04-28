@@ -46,12 +46,13 @@ class UserController extends RestfulController {
             def users = User.getAll()
             respond users.collect {
                 [
-                        avatar   : users.avatarLink,
-                        firstName: users.firstName,
-                        lastName : users.lastName,
-                        email    : users.email,
-                        phone    : users.phone,
-                        gender   : users.gender
+                        id         : users.id[0],
+                        avatarLink : users.avatarLink[0],
+                        firstName  : users.firstName[0],
+                        lastName   : users.lastName[0],
+                        email      : users.email[0],
+                        phone      : users.phone[0],
+                        gender     : users.gender[0]
                 ]
             }
         }
@@ -76,5 +77,21 @@ class UserController extends RestfulController {
         )
         if (user.validate()) user.save()
         else user.errors.allErrors.each { println it }
+    }
+
+    def login(){
+        try {
+            String username = params.username
+            String password = params.password
+            def user = User.findByUsername(username)
+            if (user && (user.password == password))
+                render "{access: 'accepted'}"
+            else
+                render "{access: 'denied'}"
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{error: "'+ e +'"}'
+        }
     }
 }
