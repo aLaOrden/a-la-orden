@@ -84,7 +84,9 @@ class UserController extends RestfulController {
             String username = params.username
             String password = params.password
             def user = User.findByUsername(username)
-            if (user && (user.password == password))
+            if (user == null)
+                render '{"access": "denied"}'
+            else if (user.password == password)
                 render '{"access": "accepted"}'
             else
                 render '{"access": "denied"}'
