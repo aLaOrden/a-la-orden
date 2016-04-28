@@ -13,7 +13,7 @@ class UrlMappings {
 
         // API
         "/users/username/$username?" (controller: "user", action: "username")
-        //"/users/newUser/$username?$password?$firstName?$lastName?$email?$gender?" (controller: "user", action: "newUser")
+        "/users/login/" (controller: "user", action: "login", method: "POST")
         "/users"   (resources: "user")
         "/tags"    (resources: "tag")
         "/offers/tag/$title?"(controller: "offer", action: "classified")

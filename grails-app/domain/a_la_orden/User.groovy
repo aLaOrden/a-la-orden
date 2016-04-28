@@ -7,7 +7,7 @@ class User {
     String  firstName
     String  lastName
     String  email
-    Number  phone
+    Long    phone
     String  avatarLink
     String  gender
     Boolean admin
@@ -25,7 +25,7 @@ class User {
         firstName  nullable: false, size: 2..30
         lastName   nullable: false, size: 2..30
         email      nullable: false, size: 5..30, unique: true, email: true
-        phone      nullable: true
+        phone      nullable: true,  size: 3..20
         avatarLink nullable: true,  size: 5..30, unique: true, url: true
         gender     nullable: false, inList: ["M", "F"]
         admin      nullable: false
