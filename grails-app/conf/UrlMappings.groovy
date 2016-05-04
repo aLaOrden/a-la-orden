@@ -20,6 +20,7 @@ class UrlMappings {
         "/offers"(resources: "offer")
         "/offers/title/$title?"(controller: "offer", action: "title")
         "/demands"(resources: "demand")
+        "/demands/title/$title?"(controller: "demand", action: "title")
         "/scores"(resources: "score")
     }
 }
