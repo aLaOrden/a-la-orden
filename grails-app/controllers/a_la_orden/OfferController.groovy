@@ -51,7 +51,7 @@ class OfferController extends RestfulController {
             }
 
             if(allOffers.size() == 0){
-                respond JSON.parse('No se han encontrado resultados');
+                render '[{"Resultado":"No se han encontrado coincidencias"}]'
             }else {
                 respond allOffers
             }
