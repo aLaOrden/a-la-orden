@@ -86,10 +86,19 @@ class UserController extends RestfulController {
             def user = User.findByUsername(username)
             if (user == null)
                 render (status:403, text:'{"access": "denied", "reason": "invalid username"}')
-            else if (user.password == password)
-                render (status:200, contentType: "application/json") {
-                    user
+            else if (user.password == password) {
+                def queryMap = new HashMap(user.properties)
+                queryMap.remove("offers")
+                queryMap.remove("favorites")
+                queryMap.remove("demands")
+                queryMap.remove("password")
+                def scores = queryMap.remove("scores")
+                def scoresAvg = getScoresAverage(scores)
+                queryMap.put("scoreAvg", scoresAvg)
+                render(status: 200, contentType: "application/json") {
+                    queryMap
                 }
+            }
             else
                 render (status:403, text:'{"access": "denied", "reason": "invalid password"}')
         }
