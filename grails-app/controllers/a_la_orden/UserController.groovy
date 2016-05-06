@@ -85,15 +85,17 @@ class UserController extends RestfulController {
             String password = params.password
             def user = User.findByUsername(username)
             if (user == null)
-                render '{"access": "denied"}'
+                render (status:403, text:'{"access": "denied", "reason": "invalid username"}')
             else if (user.password == password)
-                render '{"access": "accepted"}'
+                render (status:200, contentType: "application/json") {
+                    user
+                }
             else
-                render '{"access": "denied"}'
+                render (status:403, text:'{"access": "denied", "reason": "invalid password"}')
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{"error": "'+ e +'"}'
+            render (status:500, '{"error": "'+ e +'"}')
         }
     }
 }
