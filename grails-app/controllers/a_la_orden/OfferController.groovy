@@ -34,7 +34,7 @@ class OfferController extends RestfulController {
             }else {
                 def criteria = Offer.createCriteria();
                 offers = criteria.list {
-                    like('title', '%' + params.id + '%')
+                    ilike('title', '%' + params.id + '%')
                 }
             }
             def allOffers = offers.collect {
