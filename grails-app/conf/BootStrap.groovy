@@ -16,7 +16,7 @@ class BootStrap {
         else tag.errors.allErrors.each { println it }
 
         Date date;
-        use (TimeCategory) {
+        use(TimeCategory) {
             date = new Date() - 2.month
         }
 
