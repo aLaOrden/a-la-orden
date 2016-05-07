@@ -9,6 +9,6 @@ class Demand extends Service {
 
     static constraints = {
         solved nullable: false
-        deadline nullable: false
+        deadline nullable: true
     }
 }
