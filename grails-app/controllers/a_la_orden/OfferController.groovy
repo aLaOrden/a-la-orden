@@ -65,12 +65,12 @@ class OfferController extends RestfulController {
     def title() {
         try {
             def offers
-            if (params.id == null) {
+            if (params.title == null) {
                 offers = Offer.findAll();
             } else {
                 def criteria = Offer.createCriteria();
                 offers = criteria.list {
-                    ilike('title', '%' + params.id + '%')
+                    ilike('title', '%' + params.title + '%')
                 }
             }
             def allOffers = offers.collect {
