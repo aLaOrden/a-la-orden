@@ -78,6 +78,7 @@ class UserController extends RestfulController {
                 def scores = queryMap.remove("scores")
                 def scoresAvg = getScoresAverage(scores)
                 queryMap.put("scoreAvg", scoresAvg)
+                queryMap.put("id", user.id)
                 render(status: 200, contentType: "application/json") {
                     queryMap
                 }
