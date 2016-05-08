@@ -47,12 +47,12 @@ class DemandController extends RestfulController {
     def title() {
         try {
             def demands
-            if (params.id == null) {
+            if (params.title == null && params.id == null) {
                 demands = Demand.findAll();
             } else {
                 def criteria = Demand.createCriteria();
                 demands = criteria.list {
-                    ilike('title', '%' + params.id + '%')
+                    ilike('title', '%' + params.title + '%')
                 }
             }
             def allDemands = demands.collect {
