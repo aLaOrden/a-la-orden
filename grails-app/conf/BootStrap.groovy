@@ -42,7 +42,7 @@ class BootStrap {
         else tag.errors.allErrors.each { println it }
         def offer2 = new Offer(
                 title: "Matematicas avanzadas",
-                description: "profesor de calCULo avnazado y profundo",
+                description: "profesor de calculo avanzado y profundo",
                 deadline: new Date().time,
                 state: "activo",
                 tags: [],
