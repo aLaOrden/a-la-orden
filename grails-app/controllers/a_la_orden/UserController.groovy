@@ -27,7 +27,7 @@ class UserController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render '{"error": "'+ e +'"}'
         }
     }
 
@@ -58,40 +58,36 @@ class UserController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render '{"error": "'+ e +'"}'
         }
-    }
-
-    def newUser(){
-        def user = new User (
-                username: params.username as String,
-                password: params.pass as String,
-                firstName: params.name as String,
-                lastName: params.surname as String,
-                email: params.email as String,
-                gender: params.gender as String,
-                admin: false,
-                offers: [],
-                demands: [],
-                scores: []
-        )
-        if (user.validate()) user.save()
-        else user.errors.allErrors.each { println it }
     }
 
     def login(){
         try {
-            String username = params.username
-            String password = params.password
+            String username = request.JSON["username"]
+            String password = request.JSON["password"]
             def user = User.findByUsername(username)
-            if (user && (user.password == password))
-                render "{access: 'accepted'}"
+            if (user == null)
+                render (status:403, text:'{"denied": "invalid username"}')
+            else if (user.password == password) {
+                def queryMap = new HashMap(user.properties)
+                queryMap.remove("offers")
+                queryMap.remove("favorites")
+                queryMap.remove("demands")
+                queryMap.remove("password")
+                def scores = queryMap.remove("scores")
+                def scoresAvg = getScoresAverage(scores)
+                queryMap.put("scoreAvg", scoresAvg)
+                render(status: 200, contentType: "application/json") {
+                    queryMap
+                }
+            }
             else
-                render "{access: 'denied'}"
+                render (status:403, text:'{"denied": "invalid password"}')
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "'+ e +'"}'
+            render (status:500, '{"error": "'+ e +'"}')
         }
     }
 }
