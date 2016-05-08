@@ -64,8 +64,8 @@ class UserController extends RestfulController {
 
     def login(){
         try {
-            String username = params.username
-            String password = params.password
+            String username = request.JSON["username"]
+            String password = request.JSON["password"]
             def user = User.findByUsername(username)
             if (user == null)
                 render (status:403, text:'{"denied": "invalid username"}')
