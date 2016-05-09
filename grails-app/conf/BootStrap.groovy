@@ -31,15 +31,15 @@ class BootStrap {
                 longitude: -74.083313,
                 price: 30000
         )
-        offer.tags.add(tag)
+        offer.addToTags(tag)
         if (offer.validate()) offer.save()
         else offer.errors.allErrors.each { println it }
 
         def tag2 = new Tag(
                 title: "Matematicas"
         )
-        if (tag.validate()) tag.save()
-        else tag.errors.allErrors.each { println it }
+        if (tag2.validate()) tag2.save()
+        else tag2.errors.allErrors.each { println it }
         def offer2 = new Offer(
                 title: "Matematicas avanzadas",
                 description: "profesor de calculo avanzado y profundo",
@@ -50,7 +50,7 @@ class BootStrap {
                 longitude: -74.083313,
                 price: 30000
         )
-        offer2.tags.add(tag2)
+        offer2.addToTags(tag2)
         if (offer2.validate()) offer2.save()
         else offer2.errors.allErrors.each { println it }
 
@@ -63,7 +63,7 @@ class BootStrap {
                 tags: [],
                 solved: false
         )
-        demand.tags.add(tag)
+        demand.addToTags(tag)
         if (demand.validate()) demand.save()
         else demand.errors.allErrors.each { println it }
 
@@ -90,9 +90,9 @@ class BootStrap {
                 demands: [],
                 scores: []
         )
-        user.offers.add(offer)
-        user.demands.add(demand)
-        user.scores.add(score)
+        user.addToOffers(offer)
+        user.addToDemands(demand)
+        user.addToScores(score)
         if (user.validate()) user.save()
         else user.errors.allErrors.each { println it }
 
@@ -109,9 +109,9 @@ class BootStrap {
                 demands: [],
                 scores: []
         )
-        user2.offers.add(offer)
-        user2.demands.add(demand)
-        user2.scores.add(score)
+        user2.addToOffers(offer)
+        user2.addToDemands(demand)
+        user2.addToScores(score)
         if (user2.validate()) user.save()
         else user2.errors.allErrors.each { println it }
     }
