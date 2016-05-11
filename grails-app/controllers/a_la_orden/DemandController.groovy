@@ -2,6 +2,7 @@ package a_la_orden
 
 import grails.rest.RestfulController
 import groovy.time.TimeCategory
+import org.springframework.dao.DataIntegrityViolationException
 
 class DemandController extends RestfulController {
     static responseFormats = ['json', 'xml']
@@ -75,9 +76,23 @@ class DemandController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "' + e + '"}'
+            render '{"error": "' + e + '"}'
         }
     }
 
-
+    def delete() {
+        try {
+            def demand = Demand.get(params.id as Long)
+            demand.tags.clear()
+            demand.delete(flush: true)
+            render '{"deleted":' + params.id + '}'
+        }
+        catch (DataIntegrityViolationException e) {
+            render '{"error": "' + e + '"}'
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{"error": "' + e + '"}'
+        }
+    }
 }
