@@ -99,5 +99,31 @@ class OfferController extends RestfulController {
         }
     }
 
+    def delete() {
+        try {
+            def offer = Offer.findById(params.id)
+            if (offer == null) {
+                render 'Esta oferta no existe'
+            } else {
+                offer.tags.clear()
+                def users = User.findAll();
+                for (int i = 0; i < users.size(); i++) {
+                    users[i].removeFromOffers(offer)
+                }
+                def scores = Score.findAll();
+                for (int i = 0; i < scores.size(); i++) {
+                    if(scores[i].offer.id == offer.id){
+                        scores[i].offer = null;
+                    }
+                }
+                offer.delete(flush:true)
+                render 'La oferta a sido eliminada'
+            }
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render 'La oferta no se pudo eliminar'
+        }
+    }
 
 }
