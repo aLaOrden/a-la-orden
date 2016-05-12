@@ -75,7 +75,7 @@ class DemandController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "' + e + '"}'
+            render '{"error": "' + e + '"}'
         }
     }
 
@@ -83,20 +83,20 @@ class DemandController extends RestfulController {
         try {
             def demand = Demand.findById(params.id)
             if (demand == null) {
-                render 'Esta demanda no existe'
+                render '{"resultado": "Esta demanda no existe"}'
             } else {
                 demand.tags.clear()
                 def users = User.findAll();
                 for (int i = 0; i < users.size(); i++) {
                     users[i].removeFromDemands(demand)
                 }
-                demand.delete(flush:true)
-                render 'La demanda a sido eliminada'
+                demand.delete(flush: true)
+                render '{"resultado": "La demanda a sido eliminada"}'
             }
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render 'La demanda no se pudo eliminar'
+            render '{"error": "' + e + '"}'
         }
     }
 
