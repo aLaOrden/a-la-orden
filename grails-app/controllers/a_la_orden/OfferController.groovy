@@ -103,7 +103,7 @@ class OfferController extends RestfulController {
         try {
             def offer = Offer.findById(params.id)
             if (offer == null) {
-                render 'Esta oferta no existe'
+                render '{"resultado": "Esta oferta no existe"}'
             } else {
                 offer.tags.clear()
                 def users = User.findAll();
@@ -117,12 +117,12 @@ class OfferController extends RestfulController {
                     }
                 }
                 offer.delete(flush:true)
-                render 'La oferta a sido eliminada'
+                render '{"resultado": "La demanda a sido eliminada"}'
             }
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render 'La oferta no se pudo eliminar'
+            render '{"error": "' + e + '"}'
         }
     }
 
