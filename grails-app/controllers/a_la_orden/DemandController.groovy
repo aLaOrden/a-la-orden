@@ -2,7 +2,6 @@ package a_la_orden
 
 import grails.rest.RestfulController
 import groovy.time.TimeCategory
-import org.springframework.dao.DataIntegrityViolationException
 
 class DemandController extends RestfulController {
     static responseFormats = ['json', 'xml']
