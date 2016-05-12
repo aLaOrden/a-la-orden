@@ -21,7 +21,7 @@ class BootStrap {
         }
 
         // offer example
-        def offer = new Offer(
+        def offer = new Offer (
                 title: "Cursos de organo",
                 description: "Hace 3 años dicto cursos de organo, soy muy bueno",
                 deadline: date.time,
@@ -35,7 +35,7 @@ class BootStrap {
         if (offer.validate()) offer.save()
         else offer.errors.allErrors.each { println it }
 
-        def tag2 = new Tag(
+        def tag2 = new Tag (
                 title: "Matematicas"
         )
         if (tag2.validate()) tag2.save()
@@ -55,7 +55,7 @@ class BootStrap {
         else offer2.errors.allErrors.each { println it }
 
         // demand example
-        def demand = new Demand(
+        def demand = new Demand (
                 title: "Cursos de guitarra",
                 description: "Como es posible que nadie dicte curso de guitarra?",
                 deadline: new Date().time,
@@ -68,7 +68,7 @@ class BootStrap {
         else demand.errors.allErrors.each { println it }
 
         // score example
-        def score = new Score(
+        def score = new Score (
                 score: 5,
                 description: "Muy habil",
                 date: new Date(2012, 07, 16).time,
@@ -78,7 +78,7 @@ class BootStrap {
         else score.errors.allErrors.each { println it }
 
         // user example
-        def user = new User(
+        def user = new User (
                 username: "maasencioh",
                 password: "12345",
                 firstName: "Miguel",
@@ -97,7 +97,7 @@ class BootStrap {
         else user.errors.allErrors.each { println it }
 
         // user example
-        def user2 = new User(
+        def user2 = new User (
                 username: "erickvelasco11",
                 password: "Erick.123",
                 firstName: "Erick",

@@ -82,17 +82,24 @@ class DemandController extends RestfulController {
 
     def delete() {
         try {
-            def demand = Demand.get(params.id as Long)
-            demand.tags.clear()
-            demand.delete(flush: true)
-            render '{"deleted":' + params.id + '}'
-        }
-        catch (DataIntegrityViolationException e) {
-            render '{"error": "' + e + '"}'
+            def demand = Demand.findById(params.id)
+            if (demand == null) {
+                render '{"resultado": "Esta demanda no existe"}'
+            } else {
+                demand.tags.clear()
+                def users = User.findAll();
+                for (int i = 0; i < users.size(); i++) {
+                    users[i].removeFromDemands(demand)
+                }
+                demand.delete(flush: true)
+                render '{"resultado": "La demanda a sido eliminada"}'
+            }
         }
         catch (Exception e) {
             response.setContentType("application/json")
             render '{"error": "' + e + '"}'
         }
     }
+
+
 }
