@@ -1,6 +1,7 @@
 package a_la_orden
 
 import grails.rest.RestfulController
+import grails.transaction.Transactional
 import groovy.time.TimeCategory
 
 class DemandController extends RestfulController {
@@ -79,6 +80,7 @@ class DemandController extends RestfulController {
         }
     }
 
+    @Transactional
     def delete() {
         try {
             def demand = Demand.findById(params.id)
@@ -90,7 +92,7 @@ class DemandController extends RestfulController {
                 for (int i = 0; i < users.size(); i++) {
                     users[i].removeFromDemands(demand)
                 }
-                demand.delete(flush: true)
+                demand.delete
                 render '{"resultado": "La demanda a sido eliminada"}'
             }
         }

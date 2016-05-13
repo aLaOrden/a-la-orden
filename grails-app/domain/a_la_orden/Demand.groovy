@@ -26,14 +26,4 @@ class Demand {
         solved      nullable: false
         deadline    nullable: true
     }
-
-    def beforeDelete() {
-        //noinspection UnnecessaryQualifiedReference
-        def tagDemands = Tag.createCriteria().list {
-            demands {
-                idEq(this.id)
-            }
-        }
-        println tagDemands
-    }
 }
