@@ -83,7 +83,7 @@ class DemandController extends RestfulController {
     @Transactional
     def delete() {
         try {
-            def demand = Demand.findById(params.id)
+            Demand demand = Demand.findById(params.id)
             if (demand == null) {
                 render '{"resultado": "Esta demanda no existe"}'
             } else {
@@ -92,7 +92,7 @@ class DemandController extends RestfulController {
                 for (int i = 0; i < users.size(); i++) {
                     users[i].removeFromDemands(demand)
                 }
-                demand.delete
+                demand.delete(flush:true)
                 render '{"resultado": "La demanda a sido eliminada"}'
             }
         }
