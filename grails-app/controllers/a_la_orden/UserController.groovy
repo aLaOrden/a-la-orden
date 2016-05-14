@@ -32,13 +32,15 @@ class UserController extends RestfulController {
     }
 
     def getScoresAverage(def scores){
+        if (scores.size() == 0)
+            return 0
         def average = 0;
         for (int i = 0; i < scores.size(); i++) {
-            Score myScore = scores[i]
+            Score myScore = scores[i] as Score
             average += myScore.score
         }
         average /= scores.size()
-        return average;
+        return average
     }
 
     def index(){
