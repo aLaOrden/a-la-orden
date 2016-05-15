@@ -1,6 +1,7 @@
 package a_la_orden
 
 import grails.rest.RestfulController
+import grails.transaction.Transactional
 import groovy.time.TimeCategory
 
 class DemandController extends RestfulController {
@@ -75,7 +76,29 @@ class DemandController extends RestfulController {
         }
         catch (Exception e) {
             response.setContentType("application/json")
-            render '{error: "' + e + '"}'
+            render '{"error": "' + e + '"}'
+        }
+    }
+
+    @Transactional
+    def delete() {
+        try {
+            Demand demand = Demand.findById(params.id)
+            if (demand == null) {
+                render '{"resultado": "Esta demanda no existe"}'
+            } else {
+                demand.tags.clear()
+                def users = User.findAll();
+                for (int i = 0; i < users.size(); i++) {
+                    users[i].removeFromDemands(demand)
+                }
+                demand.delete(flush:true)
+                render '{"resultado": "La demanda a sido eliminada"}'
+            }
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{"error": "' + e + '"}'
         }
     }
 

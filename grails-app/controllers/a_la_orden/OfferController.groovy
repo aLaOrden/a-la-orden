@@ -1,6 +1,7 @@
 package a_la_orden
 
 import grails.rest.RestfulController
+import grails.transaction.Transactional
 import groovy.time.TimeCategory
 
 
@@ -99,5 +100,32 @@ class OfferController extends RestfulController {
         }
     }
 
+    @Transactional
+    def delete() {
+        try {
+            def offer = Offer.findById(params.id)
+            if (offer == null) {
+                render '{"resultado": "Esta oferta no existe"}'
+            } else {
+                offer.tags.clear()
+                def users = User.findAll();
+                for (int i = 0; i < users.size(); i++) {
+                    users[i].removeFromOffers(offer)
+                }
+                def scores = Score.findAll();
+                for (int i = 0; i < scores.size(); i++) {
+                    if(scores[i].offer != null && scores[i].offer.id == offer.id){
+                        scores[i].offer = null;
+                    }
+                }
+                offer.delete(flush:true)
+                render '{"resultado": "La oferta a sido eliminada"}'
+            }
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{"error": "' + e + '"}'
+        }
+    }
 
 }

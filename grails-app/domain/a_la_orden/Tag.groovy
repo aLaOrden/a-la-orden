@@ -4,9 +4,7 @@ class Tag {
 
     String title
 
-    static belongsTo = Service
-
     static constraints = {
-        title nullable: false, size: 5..50
+        title   nullable: false, size: 5..50
     }
 }

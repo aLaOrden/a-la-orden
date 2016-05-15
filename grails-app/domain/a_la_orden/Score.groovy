@@ -13,7 +13,6 @@ class Score {
         score       nullable: false, range: 1..5
         description nullable: true
         date        nullable: false
-
         offer       nullable: true
     }
 }
