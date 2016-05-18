@@ -45,6 +45,20 @@ class DemandController extends RestfulController {
         }
     }
 
+    def show(){
+        def demand
+        demand = Demand.findById(params.id)
+        def users = User.findAll()
+        def user
+        for(User u : users){
+            if(u.demands.contains(demand)){
+                user = u
+                break;
+            }
+        }
+        response demand
+    }
+
     def title() {
         try {
             def demands
