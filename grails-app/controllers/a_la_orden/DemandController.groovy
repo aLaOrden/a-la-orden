@@ -56,7 +56,7 @@ class DemandController extends RestfulController {
                 break;
             }
         }
-        response demand
+        respond demand
     }
 
     def title() {
