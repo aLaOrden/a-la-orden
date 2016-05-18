@@ -56,7 +56,12 @@ class DemandController extends RestfulController {
                 break;
             }
         }
-        respond demand
+
+        def queryMap = new HashMap(demand.properties)
+        queryMap.put("userId", user.id)
+        queryMap.put("userName", user.username)
+        queryMap.put("userFirstName", user.firstName)
+        respond queryMap
     }
 
     def title() {
