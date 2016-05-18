@@ -109,8 +109,7 @@ class BootStrap {
                 demands: [],
                 scores: []
         )
-        user2.addToOffers(offer)
-        user2.addToDemands(demand)
+        user2.addToOffers(offer2)
         user2.addToScores(score)
         if (user2.validate()) user2.save()
         else user2.errors.allErrors.each { println it }
