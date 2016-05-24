@@ -48,6 +48,25 @@ class OfferController extends RestfulController {
         }
     }
 
+    def show(){
+        def offer
+        offer = Offer.findById(params.id)
+        def users = User.findAll()
+        def user
+        for(User u : users){
+            if(u.offers.contains(offer)){
+                user = u
+                break;
+            }
+        }
+
+        def queryMap = new HashMap(offer.properties)
+        queryMap.put("userId", user.id)
+        queryMap.put("userName", user.username)
+        queryMap.put("userFirstName", user.firstName)
+        respond queryMap
+    }
+
     def classified() {
         try {
             def tagId = Tag.findByTitle(params.title as String).id

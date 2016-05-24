@@ -45,6 +45,25 @@ class DemandController extends RestfulController {
         }
     }
 
+    def show(){
+        def demand
+        demand = Demand.findById(params.id)
+        def users = User.findAll()
+        def user
+        for(User u : users){
+            if(u.demands.contains(demand)){
+                user = u
+                break;
+            }
+        }
+
+        def queryMap = new HashMap(demand.properties)
+        queryMap.put("userId", user.id)
+        queryMap.put("userName", user.username)
+        queryMap.put("userFirstName", user.firstName)
+        respond queryMap
+    }
+
     def title() {
         try {
             def demands
