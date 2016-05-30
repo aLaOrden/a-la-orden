@@ -27,12 +27,12 @@ class DemandController extends RestfulController {
             }
             def allOffers = demands.collect {
                 [
-                        id         : demands.id[0],
-                        title      : demands.title[0],
-                        description: demands.description[0],
-                        deadline   : demands.deadline[0],
-                        state      : demands.state[0],
-                        solved     : demands.solved[0]
+                        id         : demands.id,
+                        title      : demands.title,
+                        description: demands.description,
+                        deadline   : demands.deadline,
+                        state      : demands.state,
+                        solved     : demands.solved
                 ]
             }
 
