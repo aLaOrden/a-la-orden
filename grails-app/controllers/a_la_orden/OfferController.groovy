@@ -25,14 +25,14 @@ class OfferController extends RestfulController {
             }
             def allOffers = offers.collect {
                 [
-                        id         : offers.id[0],
-                        title      : offers.title[0],
-                        description: offers.description[0],
-                        deadline   : offers.deadline[0],
-                        state      : offers.state[0],
-                        latitude   : offers.latitude[0],
-                        longitude  : offers.longitude[0],
-                        price      : offers.price[0]
+                        id         : offers.id,
+                        title      : offers.title,
+                        description: offers.description,
+                        deadline   : offers.deadline,
+                        state      : offers.state,
+                        latitude   : offers.latitude,
+                        longitude  : offers.longitude,
+                        price      : offers.price
                 ]
             }
 
