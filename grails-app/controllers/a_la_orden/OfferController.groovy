@@ -23,7 +23,7 @@ class OfferController extends RestfulController {
             offers = criteria.list {
                 gt('deadline', date.time)
             }
-            def allOffers = offers.collect {
+            def allOffers = offers.collectEntries() { Offer ofr ->
                 [
                         id         : offers.id,
                         title      : offers.title,

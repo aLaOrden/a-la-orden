@@ -25,7 +25,7 @@ class DemandController extends RestfulController {
             demands = criteria.list {
                 gt('deadline', date.time)
             }
-            def allOffers = demands.collect {
+            def allDemands = demands.collectEntries() { Demand dmnd ->
                 [
                         id         : demands.id,
                         title      : demands.title,
@@ -36,10 +36,10 @@ class DemandController extends RestfulController {
                 ]
             }
 
-            if (allOffers.size() == 0) {
+            if (allDemands.size() == 0) {
                 render '[{"Resultado":"No se han encontrado coincidencias"}]'
             } else {
-                respond allOffers
+                respond allDemands
             }
         }
         catch (Exception e) {

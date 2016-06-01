@@ -46,7 +46,7 @@ class UserController extends RestfulController {
     def index(){
         try {
             def users = User.getAll()
-            respond users.collect {
+            respond users.collectEntries() { User usr ->
                 [
                         id         : users.id,
                         avatarLink : users.avatarLink,
