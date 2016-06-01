@@ -24,6 +24,6 @@ class Demand {
         state       nullable: false, inList: ["activo", "pendiente", "cancelado", "finalizado", "reportado"]
         tags        nullable: true
         solved      nullable: false
-        deadline    nullable: false
+        deadline    nullable: true
     }
 }
