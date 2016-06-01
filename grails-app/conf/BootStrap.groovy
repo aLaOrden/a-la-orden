@@ -105,7 +105,6 @@ class BootStrap {
                 email: "erickvelasco11@gmail.com",
                 gender: "M",
                 admin: true,
-                avatarLink: "https://okyioq-bn1306.files.1drv.com/y3pxQMQKt0NefxJLPA2-IJAnmlhSCtQz8TbyYlgC9sHjZ197DNaBE50Y9UiH1uL-pcD0QTC0XdQZI7mhDLyxPFMRz8gYJowGjqzXowqNiVWAofCJPvc8parLyxaYHjCuJbAPIQrzLMSWfCSwntUetlVIwC4uzYNsmqLot_ewnZxcdA/Yo%20%282%29.jpg",
                 offers: [],
                 demands: [],
                 scores: []
