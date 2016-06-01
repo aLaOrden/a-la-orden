@@ -3,9 +3,6 @@ package a_la_orden
 import grails.rest.RestfulController
 import grails.transaction.Transactional
 import groovy.time.TimeCategory
-import org.codehaus.groovy.grails.web.servlet.HttpHeaders
-
-import static org.springframework.http.HttpStatus.CREATED
 
 class DemandController extends RestfulController {
     static responseFormats = ['json', 'xml']
@@ -25,21 +22,21 @@ class DemandController extends RestfulController {
             demands = criteria.list {
                 gt('deadline', date.time)
             }
-            def allDemands = demands.collectEntries() { Demand dmnd ->
+            def allOffers = demands.collect {
                 [
-                        id         : demands.id,
-                        title      : demands.title,
-                        description: demands.description,
-                        deadline   : demands.deadline,
-                        state      : demands.state,
-                        solved     : demands.solved
+                        id         : demands.id[0],
+                        title      : demands.title[0],
+                        description: demands.description[0],
+                        deadline   : demands.deadline[0],
+                        state      : demands.state[0],
+                        solved     : demands.solved[0]
                 ]
             }
 
-            if (allDemands.size() == 0) {
+            if (allOffers.size() == 0) {
                 render '[{"Resultado":"No se han encontrado coincidencias"}]'
             } else {
-                respond allDemands
+                respond allOffers
             }
         }
         catch (Exception e) {
@@ -78,14 +75,14 @@ class DemandController extends RestfulController {
                     ilike('title', '%' + params.title + '%')
                 }
             }
-            def allDemands = demands.collectEntries() { Demand dmnd ->
+            def allDemands = demands.collect {
                 [
-                        id         : demands.id,
-                        title      : demands.title,
-                        description: demands.description,
-                        deadline   : demands.deadline,
-                        state      : demands.state,
-                        solved     : demands.solved
+                        id         : demands.id[0],
+                        title      : demands.title[0],
+                        description: demands.description[0],
+                        deadline   : demands.deadline[0],
+                        state      : demands.state[0],
+                        solved     : demands.solved[0]
                 ]
             }
 
@@ -124,38 +121,5 @@ class DemandController extends RestfulController {
         }
     }
 
-    @Transactional
-    def save(){
-        try {
-            Demand instance = new Demand()
-            instance.title = params.title
-            instance.description = params.description
-            instance.state = params.state
-            instance.solved = params.solved
-            Date date
-            use(TimeCategory) {
-                date = new Date() + 60.days
-            }
-            instance.deadline = date.time
-            instance.save flush: true
-
-            request.withFormat {
-                form multipartForm {
-                    flash.message = message(code: 'default.created.message', args: [message(code: "${resourceName}.label".toString(), default: resourceClassName), instance.id])
-                    redirect instance
-                }
-                '*' {
-                    response.addHeader(HttpHeaders.LOCATION,
-                            g.createLink(
-                                    resource: this.controllerName, action: 'show',id: instance.id, absolute: true,
-                                    namespace: hasProperty('namespace') ? this.namespace : null ))
-                    respond instance, [status: CREATED]
-                }
-            }
-        }catch (Exception e) {
-            response.setContentType("application/json")
-            render '{"error": "' + e + '"}'
-        }
-    }
 
 }

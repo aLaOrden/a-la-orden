@@ -26,7 +26,7 @@ class User {
         lastName   nullable: false, size: 2..30
         email      nullable: false, size: 5..30, unique: true, email: true
         phone      nullable: true,  size: 3..20
-        avatarLink nullable: true,  unique: true, url: true
+        avatarLink nullable: true,  size: 5..30, unique: true, url: true
         gender     nullable: false, inList: ["M", "F"]
         admin      nullable: false
 

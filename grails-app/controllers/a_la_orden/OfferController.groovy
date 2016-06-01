@@ -23,16 +23,16 @@ class OfferController extends RestfulController {
             offers = criteria.list {
                 gt('deadline', date.time)
             }
-            def allOffers = offers.collectEntries() { Offer ofr ->
+            def allOffers = offers.collect {
                 [
-                        id         : offers.id,
-                        title      : offers.title,
-                        description: offers.description,
-                        deadline   : offers.deadline,
-                        state      : offers.state,
-                        latitude   : offers.latitude,
-                        longitude  : offers.longitude,
-                        price      : offers.price
+                        id         : offers.id[0],
+                        title      : offers.title[0],
+                        description: offers.description[0],
+                        deadline   : offers.deadline[0],
+                        state      : offers.state[0],
+                        latitude   : offers.latitude[0],
+                        longitude  : offers.longitude[0],
+                        price      : offers.price[0]
                 ]
             }
 
@@ -93,16 +93,16 @@ class OfferController extends RestfulController {
                     ilike('title', '%' + params.title + '%')
                 }
             }
-            def allOffers = offers.collectEntries() { Offer ofr ->
+            def allOffers = offers.collect {
                 [
-                        id         : offers.id,
-                        title      : offers.title,
-                        description: offers.description,
-                        deadline   : offers.deadline,
-                        state      : offers.state,
-                        latitude   : offers.latitude,
-                        longitude  : offers.longitude,
-                        price      : offers.price
+                        id         : offers.id[0],
+                        title      : offers.title[0],
+                        description: offers.description[0],
+                        deadline   : offers.deadline[0],
+                        state      : offers.state[0],
+                        latitude   : offers.latitude[0],
+                        longitude  : offers.longitude[0],
+                        price      : offers.price[0]
                 ]
             }
 
