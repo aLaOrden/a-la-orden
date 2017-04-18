@@ -81,6 +81,24 @@ class OfferController extends RestfulController {
         }
     }
 
+    def show() {
+        try {
+            def offer = Offer.get(params.id as Serializable)
+            def queryMap = new HashMap(offer.properties)
+            def c = User.createCriteria()
+            def user = c.get {
+                offers { idEq(offer.id) }
+            }
+            queryMap.put("userId", user.id)
+            queryMap.put("userName", user.username)
+            respond queryMap
+        }
+        catch (Exception e) {
+            response.setContentType("application/json")
+            render '{error:"' + e + '"}'
+        }
+    }
+
 
     def title() {
         try {
